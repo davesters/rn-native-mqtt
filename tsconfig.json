@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "outDir": "lib",
+    "rootDir": "src",
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false,
+    "preserveConstEnums": true,
+    "allowJs": false,
+    "sourceMap": true,
+    "noImplicitReturns": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
+    "removeComments": true,
+    "declaration": true,
+    "declarationDir": "types"
+},
+  "exclude": [
+    "android",
+    "ios",
+    "lib",
+    "node_modules",
+    "types"
+  ],
+  "include": [
+    "src"
+  ]
+}
