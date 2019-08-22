@@ -21,37 +21,15 @@ $ npm install react-native-native-mqtt --save
 $ yarn add react-native-native-mqtt
 ```
 
-## Mostly automatic installation
+## Installation
+
+If you are not on React Native 0.60+ and not using auto-linking, you may need to run the usual link command as below:
 
 ```
 $ react-native link react-native-native-mqtt
 ```
 
-Even though this does the more annoying parts for you, there are still some things that need to be done manually to wire everything up. Those are outlined in the `Additional installation steps` section below.
-
-## Manual installation
-
-### iOS
-
-1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
-2. Go to `node_modules` ➜ `react-native-native-mqtt` and add `NativeMqtt.xcodeproj`
-3. In XCode, in the project navigator, select your project. Add `libNativeMqtt.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
-4. Run your project (`Cmd+R`)<
-
-### Android
-
-1. Open up `android/app/src/main/java/[...]/MainApplication.java`
-  - Add `import com.reactlibrary.NativeMqttPackage;` to the imports at the top of the file
-  - Add `new NativeMqttPackage()` to the list returned by the `getPackages()` method
-2. Append the following lines to `android/settings.gradle`:
-  	```
-  	include ':react-native-native-mqtt'
-  	project(':react-native-native-mqtt').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-native-mqtt/android')
-  	```
-3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
-  	```
-      compile project(':react-native-native-mqtt')
-  	```
+This module has only been tested on 0.60+, so at this point you are a bit on your own, but should be standard stuff.
 
 ## Additional Installation Steps
 
@@ -63,14 +41,43 @@ There are still some manual tasks that need to be done to wire this package up f
 
 ### iOS
 
+We need to add a bridging header file to your Xcode project because this module was written in Swift.
+
 * Open your project's `ios` folder in Xcode.
 * Add a new Swift file to the project. Name it whatever you want. Add a bridging header file when it prompts you to add one automatically.
+
+Now you need to run a `pod install` for your project.
+
 * Navigate to the `ios` folder in your project and run `pod install`.
 
 ## Usage
-```javascript
-import NativeMqtt from 'react-native-native-mqtt';
 
-// TODO: What to do with the module?
-NativeMqtt;
+This is a quick example written in Typescript.
+
+```javascript
+import * as Mqtt from 'react-native-native-mqtt';
+
+const client = new Mqtt.Client('[SCHEME]://[URL]:[PORT]');
+
+client.connect({
+	clientId: 'CLIENT_ID',
+	...
+}, err => {});
+
+client.on(Mqtt.Event.Message, (topic: string, message: Buffer) => {
+	console.log('Mqtt Message:', topic, message.toString());
+});
+
+client.on(Mqtt.Event.Connect, () => {
+	console.log('MQTT Connect');
+	client.subscribe(['#'], [0]);
+});
+
+client.on(Mqtt.Event.Error, (error: string) => {
+	console.log('MQTT Error:', error);
+});
+
+client.on(Mqtt.Event.Disconnect, (cause: string) => {
+	console.log('MQTT Disconnect:', cause);
+});
 ```
