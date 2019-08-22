@@ -19,6 +19,11 @@
     return dispatch_queue_create("com.davesters.reactnative.mqtt", DISPATCH_QUEUE_SERIAL);
 }
 
++ (BOOL)requiresMainQueueSetup
+{
+    return NO;
+}
+
 RCT_EXTERN_METHOD(supportedEvents)
 
 RCT_EXTERN_METHOD(newClient:(NSString *)id)

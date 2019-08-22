@@ -2,6 +2,8 @@
 
 This is an MQTT client library for React Native. It utilizes native MQTT client libraries and exposes them via a unified Javascript interface. There are a few other React Native MQTT libraries, but they did not seem to work as expected, or did not support more advanced TLS configurations.
 
+NOTE: This is currently tested only on React Native 0.60 and above using the automatic linking functionality.
+
 This library uses the following native MQTT client libraries:
 
 * iOS - https://github.com/emqx/CocoaMQTT
@@ -63,7 +65,7 @@ There are still some manual tasks that need to be done to wire this package up f
 
 * Open your project's `ios` folder in Xcode.
 * Add a new Swift file to the project. Name it whatever you want. Add a bridging header file when it prompts you to add one automatically.
-
+* Navigate to the `ios` folder in your project and run `pod install`.
 
 ## Usage
 ```javascript

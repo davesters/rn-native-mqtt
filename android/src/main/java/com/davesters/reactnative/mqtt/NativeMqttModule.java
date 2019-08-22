@@ -8,13 +8,13 @@ import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class RNNativeMqttModule extends ReactContextBaseJavaModule {
+public class NativeMqttModule extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
 
     private ConcurrentHashMap<String, MqttClient> clients;
 
-    public RNNativeMqttModule(ReactApplicationContext reactContext) {
+    public NativeMqttModule(ReactApplicationContext reactContext) {
         super(reactContext);
 
         this.reactContext = reactContext;
@@ -23,7 +23,7 @@ public class RNNativeMqttModule extends ReactContextBaseJavaModule {
 
     @Override
     public String getName() {
-        return "RNNativeMqtt";
+        return "NativeMqtt";
     }
 
     @ReactMethod
