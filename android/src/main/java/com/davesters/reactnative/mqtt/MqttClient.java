@@ -63,21 +63,25 @@ class MqttClient {
                 String key = tlsOptions.hasKey("key") ? tlsOptions.getString("key") : null;
 
                 SSLContext sslContext = SSLContext.getInstance("TLSv1.2");
-                TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+                KeyManager[] keyManagers = new KeyManager[0];
+                TrustManager[] trustManagers = new TrustManager[0];
 
                 if (cert != null && key != null) {
-                    KeyStore keyStore = EnvKeyStore.createFromPEMStrings(key, cert, "").keyStore();
                     KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance("PKIX");
+                    KeyStore keyStore = EnvKeyStore.createFromPEMStrings(key, cert, "").keyStore();
                     keyManagerFactory.init(keyStore, "".toCharArray());
+                    keyManagers = keyManagerFactory.getKeyManagers();
+                }
 
-                    if (ca != null) {
-                        KeyStore trustStore = EnvKeyStore.createFromPEMStrings(ca, "").keyStore();
-                        trustManagerFactory.init(trustStore);
-                    } else {
-                        trustManagerFactory.init((KeyStore) null);
-                    }
+                if (ca != null) {
+                    TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+                    KeyStore trustStore = EnvKeyStore.createFromPEMStrings(ca, "").keyStore();
+                    trustManagerFactory.init(trustStore);
+                    trustManagers = trustManagerFactory.getTrustManagers();
+                }
 
-                    sslContext.init(keyManagerFactory.getKeyManagers(), trustManagerFactory.getTrustManagers(), null);
+                if (keyManagers.lengh > 0 || trustManagers.length > 0) {
+                    sslContext.init(keyManagers, trustManagers, null);
                     connOpts.setSocketFactory(sslContext.getSocketFactory());
                 }
             }
