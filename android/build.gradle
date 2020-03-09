@@ -26,10 +26,10 @@ def DEFAULT_MIN_SDK_VERSION = 21
 def DEFAULT_TARGET_SDK_VERSION = 28
 
 android {
-  compileSdkVersion safeExtGet('compileSdkVersion', DEFAULT_COMPILE_SDK_VERSION)
-  buildToolsVersion safeExtGet('buildToolsVersion', DEFAULT_BUILD_TOOLS_VERSION)
+    compileSdkVersion = DEFAULT_COMPILE_SDK_VERSION
+    buildToolsVersion = DEFAULT_BUILD_TOOLS_VERSION
 
-  defaultConfig {
+    defaultConfig {
     minSdkVersion safeExtGet('minSdkVersion', DEFAULT_MIN_SDK_VERSION)
     targetSdkVersion safeExtGet('targetSdkVersion', DEFAULT_TARGET_SDK_VERSION)
     versionCode 1
@@ -54,8 +54,8 @@ repositories {
 
 dependencies {
     implementation "com.facebook.react:react-native:${safeExtGet('reactnativeVersion', '+')}"
-    implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.1'
-    implementation group: 'com.heroku.sdk', name: 'env-keystore', version: '1.1.2'
+    implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.0'
+    implementation group: 'com.heroku.sdk', name: 'env-keystore', version: '1.0.4'
 }
 
 def configureReactNativePom(def pom) {

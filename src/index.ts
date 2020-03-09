@@ -7,7 +7,7 @@ const { NativeMqtt } = NativeModules;
 const mqttEventEmitter = new NativeEventEmitter(NativeMqtt);
 
 export interface TlsOptions {
-	ca?: string;
+	caDer?: Buffer;
 	cert?: string;
 	key?: string;
 	p12?: Buffer;
@@ -105,10 +105,15 @@ export class Client {
 			throw new Error('client already connected');
 		}
 
-		let opts: ConnectionOptions = Object.assign({}, options);
+		const opts: ConnectionOptions = Object.assign({}, options);
 		if (opts.tls && opts.tls.p12) {
 			opts.tls = Object.assign({}, opts.tls);
 			opts.tls.p12 = opts.tls.p12.toString('base64') as any;
+		}
+
+		if (opts.tls && opts.tls.caDer) {
+			opts.tls = Object.assign({}, opts.tls);
+			opts.tls.caDer = opts.tls.caDer.toString('base64') as any;
 		}
 
 		NativeMqtt.connect(this.id, this.url, opts, (err: string) => {

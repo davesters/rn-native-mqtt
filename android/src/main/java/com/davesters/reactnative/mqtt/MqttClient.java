@@ -14,6 +14,18 @@ import org.eclipse.paho.client.mqttv3.*;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
+import java.security.SecureRandom;
+import java.security.SignatureException;
+import java.security.cert.Certificate;
+import java.security.cert.CertificateException;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
 import java.util.concurrent.atomic.AtomicReference;
 import java.security.KeyStore;
 import javax.net.ssl.*;
@@ -56,13 +68,12 @@ class MqttClient {
 
             if (options.hasKey("tls")) {
                 ReadableMap tlsOptions = options.getMap("tls");
-                String ca = tlsOptions.hasKey("ca") ? tlsOptions.getString("ca") : null;
+                String ca = tlsOptions.hasKey("caDer") ? tlsOptions.getString("caDer") : null;
                 String cert = tlsOptions.hasKey("cert") ? tlsOptions.getString("cert") : null;
                 String key = tlsOptions.hasKey("key") ? tlsOptions.getString("key") : null;
 
-                SSLContext sslContext = SSLContext.getInstance("TLSv1.2");
-                KeyManager[] keyManagers = new KeyManager[0];
-                TrustManager[] trustManagers = new TrustManager[0];
+                KeyManager[] keyManagers = null;
+                TrustManager[] trustManagers = null;
 
                 if (cert != null && key != null) {
                     KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance("PKIX");
@@ -72,14 +83,23 @@ class MqttClient {
                 }
 
                 if (ca != null) {
-                    TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-                    KeyStore trustStore = EnvKeyStore.createFromPEMStrings(ca, "").keyStore();
-                    trustManagerFactory.init(trustStore);
-                    trustManagers = trustManagerFactory.getTrustManagers();
+                    CertificateFactory cf = CertificateFactory.getInstance("X.509");
+                    InputStream caInput = new ByteArrayInputStream(Base64.decode(ca, Base64.DEFAULT));
+                    Certificate caCert = cf.generateCertificate(caInput);
+                    caInput.close();
+
+                    KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
+                    keyStore.load(null, null);
+                    keyStore.setCertificateEntry("ca", caCert);
+
+                    TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+                    tmf.init(keyStore);
+                    trustManagers = tmf.getTrustManagers();
                 }
 
-                if (keyManagers.lengh > 0 || trustManagers.length > 0) {
-                    sslContext.init(keyManagers, trustManagers, null);
+                if (keyManagers != null || trustManagers != null) {
+                    SSLContext sslContext = SSLContext.getInstance("TLS");
+                    sslContext.init(keyManagers, trustManagers, new SecureRandom());
                     connOpts.setSocketFactory(sslContext.getSocketFactory());
                 }
             }
@@ -88,6 +108,7 @@ class MqttClient {
             this.client.get().connect(connOpts, null, new ConnectMqttActionListener());
         } catch (Exception ex) {
             callback.invoke(ex.getMessage());
+            ex.printStackTrace();
         }
     }
 
@@ -218,6 +239,7 @@ class MqttClient {
         @Override
         public void onFailure(IMqttToken asyncActionToken, Throwable ex) {
             connectCallback.get().invoke(ex.getMessage());
+            ex.printStackTrace();
         }
     }
 
