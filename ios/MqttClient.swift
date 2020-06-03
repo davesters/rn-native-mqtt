@@ -12,7 +12,7 @@ class MqttClient {
 
     private let eventEmitter: EventEmitter
     private let id: String
-    private let client: CocoaMQTT
+    private var client: CocoaMQTT
 
     private var connectCallback: RCTResponseSenderBlock? = nil
 
@@ -24,10 +24,15 @@ class MqttClient {
 
     func connect(host: String, options: NSDictionary, callback: @escaping RCTResponseSenderBlock) {
         self.connectCallback = callback
-
+        
         guard let url = URLComponents(string: host) else {
             callback([ "Error parsing host URL" ])
             return
+        }
+        
+        if url.string?.hasPrefix("ws") as! Bool {
+            let websocket = CocoaMQTTWebSocket(uri: url.path)
+            self.client = CocoaMQTT(clientID: "", socket: websocket)
         }
 
         self.client.host = url.host!
@@ -50,7 +55,7 @@ class MqttClient {
             self.client.keepAlive = UInt16(keepAlive)
         }
         if let maxInFlightMessages = options["maxInFlightMessages"] as! Int? {
-            self.client.bufferSilosMaxNumber = UInt(maxInFlightMessages)
+            self.client.inflightWindowSize = UInt(maxInFlightMessages)
         }
         if let autoReconnect = options["autoReconnect"] as! Bool? {
             self.client.autoReconnect = autoReconnect
@@ -104,7 +109,7 @@ class MqttClient {
         self.client.connect()
     }
 
-    func subscribe(topic: String, qos: CocoaMQTTQOS) {
+    func subscribe(topic: String, qos: CocoaMQTTQoS) {
         self.client.subscribe(topic, qos: qos)
     }
 
@@ -112,7 +117,7 @@ class MqttClient {
         self.client.unsubscribe(topic)
     }
 
-    func publish(topic: String, base64Payload: String, qos: CocoaMQTTQOS, retained: Bool) {
+    func publish(topic: String, base64Payload: String, qos: CocoaMQTTQoS, retained: Bool) {
         guard let payload = Data(base64Encoded: base64Payload) else {
             return
         }
@@ -130,6 +135,10 @@ class MqttClient {
 }
 
 extension MqttClient: CocoaMQTTDelegate {
+    func mqtt(_ mqtt: CocoaMQTT, didSubscribeTopics success: NSDictionary, failed: [String]) {}
+    
+    func mqtt(_ mqtt: CocoaMQTT, didUnsubscribeTopics topics: [String]) {}
+    
     func mqtt(_ mqtt: CocoaMQTT, didConnectAck ack: CocoaMQTTConnAck) {
         if (ack == .accept) {
             self.connectCallback?(nil)
@@ -166,10 +175,6 @@ extension MqttClient: CocoaMQTTDelegate {
             "message": message.payload
         ])
     }
-
-    func mqtt(_ mqtt: CocoaMQTT, didSubscribeTopic topic: String) {}
-
-    func mqtt(_ mqtt: CocoaMQTT, didUnsubscribeTopic topic: String) {}
 
     func mqttDidPing(_ mqtt: CocoaMQTT) {}
 

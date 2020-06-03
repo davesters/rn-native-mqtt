@@ -17,6 +17,29 @@
 		678DE563230DE3930083C4AF /* CocoaMQTTMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678DE55B230DE3920083C4AF /* CocoaMQTTMessage.swift */; };
 		678DE564230DE3930083C4AF /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 678DE55D230DE3920083C4AF /* GCDAsyncUdpSocket.m */; };
 		678DE565230DE3930083C4AF /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 678DE55E230DE3920083C4AF /* GCDAsyncSocket.m */; };
+		EF60E7422488507800B9159E /* FrameConnAck.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF60E72B2488507700B9159E /* FrameConnAck.swift */; };
+		EF60E7432488507800B9159E /* FrameConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF60E72C2488507700B9159E /* FrameConnect.swift */; };
+		EF60E7442488507800B9159E /* CocoaMQTTWebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF60E72D2488507700B9159E /* CocoaMQTTWebSocket.swift */; };
+		EF60E7452488507800B9159E /* FramePubAck.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF60E72E2488507700B9159E /* FramePubAck.swift */; };
+		EF60E7462488507800B9159E /* FramePingResp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF60E72F2488507700B9159E /* FramePingResp.swift */; };
+		EF60E7472488507800B9159E /* FramePubRec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF60E7302488507800B9159E /* FramePubRec.swift */; };
+		EF60E7482488507800B9159E /* CocoaMQTTStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF60E7312488507800B9159E /* CocoaMQTTStorage.swift */; };
+		EF60E7492488507800B9159E /* CocoaMQTTDeliver.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF60E7322488507800B9159E /* CocoaMQTTDeliver.swift */; };
+		EF60E74A2488507800B9159E /* FramePubRel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF60E7332488507800B9159E /* FramePubRel.swift */; };
+		EF60E74B2488507800B9159E /* CocoaMQTTReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF60E7342488507800B9159E /* CocoaMQTTReader.swift */; };
+		EF60E74C2488507800B9159E /* FramePublish.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF60E7352488507800B9159E /* FramePublish.swift */; };
+		EF60E74D2488507800B9159E /* CocoaMQTTLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF60E7362488507800B9159E /* CocoaMQTTLogger.swift */; };
+		EF60E74E2488507800B9159E /* FrameSubscribe.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF60E7372488507800B9159E /* FrameSubscribe.swift */; };
+		EF60E74F2488507800B9159E /* FrameUnsubAck.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF60E7382488507800B9159E /* FrameUnsubAck.swift */; };
+		EF60E7502488507800B9159E /* Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF60E7392488507800B9159E /* Frame.swift */; };
+		EF60E7512488507800B9159E /* CocoaMQTTTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF60E73A2488507800B9159E /* CocoaMQTTTypes.swift */; };
+		EF60E7522488507800B9159E /* CocoaMQTTTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF60E73B2488507800B9159E /* CocoaMQTTTimer.swift */; };
+		EF60E7532488507800B9159E /* FrameDisconnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF60E73C2488507800B9159E /* FrameDisconnect.swift */; };
+		EF60E7542488507800B9159E /* FramePingReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF60E73D2488507800B9159E /* FramePingReq.swift */; };
+		EF60E7552488507800B9159E /* CocoaMQTTSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF60E73E2488507800B9159E /* CocoaMQTTSocket.swift */; };
+		EF60E7562488507800B9159E /* FrameUnsubscribe.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF60E73F2488507800B9159E /* FrameUnsubscribe.swift */; };
+		EF60E7572488507800B9159E /* FrameSubAck.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF60E7402488507800B9159E /* FrameSubAck.swift */; };
+		EF60E7582488507800B9159E /* FramePubComp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF60E7412488507800B9159E /* FramePubComp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,6 +193,29 @@
 		678DE55F230DE3920083C4AF /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
 		678DE560230DE3920083C4AF /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
 		67A117D1230E6A820047FD9C /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		EF60E72B2488507700B9159E /* FrameConnAck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameConnAck.swift; sourceTree = "<group>"; };
+		EF60E72C2488507700B9159E /* FrameConnect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameConnect.swift; sourceTree = "<group>"; };
+		EF60E72D2488507700B9159E /* CocoaMQTTWebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaMQTTWebSocket.swift; sourceTree = "<group>"; };
+		EF60E72E2488507700B9159E /* FramePubAck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FramePubAck.swift; sourceTree = "<group>"; };
+		EF60E72F2488507700B9159E /* FramePingResp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FramePingResp.swift; sourceTree = "<group>"; };
+		EF60E7302488507800B9159E /* FramePubRec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FramePubRec.swift; sourceTree = "<group>"; };
+		EF60E7312488507800B9159E /* CocoaMQTTStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaMQTTStorage.swift; sourceTree = "<group>"; };
+		EF60E7322488507800B9159E /* CocoaMQTTDeliver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaMQTTDeliver.swift; sourceTree = "<group>"; };
+		EF60E7332488507800B9159E /* FramePubRel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FramePubRel.swift; sourceTree = "<group>"; };
+		EF60E7342488507800B9159E /* CocoaMQTTReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaMQTTReader.swift; sourceTree = "<group>"; };
+		EF60E7352488507800B9159E /* FramePublish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FramePublish.swift; sourceTree = "<group>"; };
+		EF60E7362488507800B9159E /* CocoaMQTTLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaMQTTLogger.swift; sourceTree = "<group>"; };
+		EF60E7372488507800B9159E /* FrameSubscribe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameSubscribe.swift; sourceTree = "<group>"; };
+		EF60E7382488507800B9159E /* FrameUnsubAck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameUnsubAck.swift; sourceTree = "<group>"; };
+		EF60E7392488507800B9159E /* Frame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Frame.swift; sourceTree = "<group>"; };
+		EF60E73A2488507800B9159E /* CocoaMQTTTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaMQTTTypes.swift; sourceTree = "<group>"; };
+		EF60E73B2488507800B9159E /* CocoaMQTTTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaMQTTTimer.swift; sourceTree = "<group>"; };
+		EF60E73C2488507800B9159E /* FrameDisconnect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameDisconnect.swift; sourceTree = "<group>"; };
+		EF60E73D2488507800B9159E /* FramePingReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FramePingReq.swift; sourceTree = "<group>"; };
+		EF60E73E2488507800B9159E /* CocoaMQTTSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaMQTTSocket.swift; sourceTree = "<group>"; };
+		EF60E73F2488507800B9159E /* FrameUnsubscribe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameUnsubscribe.swift; sourceTree = "<group>"; };
+		EF60E7402488507800B9159E /* FrameSubAck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameSubAck.swift; sourceTree = "<group>"; };
+		EF60E7412488507800B9159E /* FramePubComp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FramePubComp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +264,29 @@
 		678DE557230DE3920083C4AF /* CocoaMQTT */ = {
 			isa = PBXGroup;
 			children = (
+				EF60E7322488507800B9159E /* CocoaMQTTDeliver.swift */,
+				EF60E7362488507800B9159E /* CocoaMQTTLogger.swift */,
+				EF60E7342488507800B9159E /* CocoaMQTTReader.swift */,
+				EF60E73E2488507800B9159E /* CocoaMQTTSocket.swift */,
+				EF60E7312488507800B9159E /* CocoaMQTTStorage.swift */,
+				EF60E73B2488507800B9159E /* CocoaMQTTTimer.swift */,
+				EF60E73A2488507800B9159E /* CocoaMQTTTypes.swift */,
+				EF60E72D2488507700B9159E /* CocoaMQTTWebSocket.swift */,
+				EF60E7392488507800B9159E /* Frame.swift */,
+				EF60E72B2488507700B9159E /* FrameConnAck.swift */,
+				EF60E72C2488507700B9159E /* FrameConnect.swift */,
+				EF60E73C2488507800B9159E /* FrameDisconnect.swift */,
+				EF60E73D2488507800B9159E /* FramePingReq.swift */,
+				EF60E72F2488507700B9159E /* FramePingResp.swift */,
+				EF60E72E2488507700B9159E /* FramePubAck.swift */,
+				EF60E7412488507800B9159E /* FramePubComp.swift */,
+				EF60E7352488507800B9159E /* FramePublish.swift */,
+				EF60E7302488507800B9159E /* FramePubRec.swift */,
+				EF60E7332488507800B9159E /* FramePubRel.swift */,
+				EF60E7402488507800B9159E /* FrameSubAck.swift */,
+				EF60E7372488507800B9159E /* FrameSubscribe.swift */,
+				EF60E7382488507800B9159E /* FrameUnsubAck.swift */,
+				EF60E73F2488507800B9159E /* FrameUnsubscribe.swift */,
 				678DE558230DE3920083C4AF /* CocoaMQTT.h */,
 				678DE559230DE3920083C4AF /* CocoaMQTTFrame.swift */,
 				678DE55A230DE3920083C4AF /* CocoaMQTT.swift */,
@@ -440,15 +509,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF60E74E2488507800B9159E /* FrameSubscribe.swift in Sources */,
 				678DE553230DE3310083C4AF /* NativeMqtt.swift in Sources */,
 				678DE561230DE3930083C4AF /* CocoaMQTTFrame.swift in Sources */,
+				EF60E7522488507800B9159E /* CocoaMQTTTimer.swift in Sources */,
+				EF60E7462488507800B9159E /* FramePingResp.swift in Sources */,
+				EF60E7532488507800B9159E /* FrameDisconnect.swift in Sources */,
+				EF60E7422488507800B9159E /* FrameConnAck.swift in Sources */,
+				EF60E7482488507800B9159E /* CocoaMQTTStorage.swift in Sources */,
+				EF60E7562488507800B9159E /* FrameUnsubscribe.swift in Sources */,
 				678DE555230DE3310083C4AF /* NativeMqttBridge.m in Sources */,
+				EF60E7582488507800B9159E /* FramePubComp.swift in Sources */,
 				678DE551230DE3310083C4AF /* EventType.swift in Sources */,
+				EF60E7492488507800B9159E /* CocoaMQTTDeliver.swift in Sources */,
 				678DE562230DE3930083C4AF /* CocoaMQTT.swift in Sources */,
+				EF60E74D2488507800B9159E /* CocoaMQTTLogger.swift in Sources */,
+				EF60E7432488507800B9159E /* FrameConnect.swift in Sources */,
+				EF60E7472488507800B9159E /* FramePubRec.swift in Sources */,
+				EF60E7572488507800B9159E /* FrameSubAck.swift in Sources */,
+				EF60E7512488507800B9159E /* CocoaMQTTTypes.swift in Sources */,
+				EF60E7552488507800B9159E /* CocoaMQTTSocket.swift in Sources */,
+				EF60E74F2488507800B9159E /* FrameUnsubAck.swift in Sources */,
+				EF60E74A2488507800B9159E /* FramePubRel.swift in Sources */,
 				678DE564230DE3930083C4AF /* GCDAsyncUdpSocket.m in Sources */,
 				678DE554230DE3310083C4AF /* EventEmitter.swift in Sources */,
+				EF60E7452488507800B9159E /* FramePubAck.swift in Sources */,
 				678DE563230DE3930083C4AF /* CocoaMQTTMessage.swift in Sources */,
+				EF60E7502488507800B9159E /* Frame.swift in Sources */,
+				EF60E74C2488507800B9159E /* FramePublish.swift in Sources */,
 				678DE565230DE3930083C4AF /* GCDAsyncSocket.m in Sources */,
+				EF60E7442488507800B9159E /* CocoaMQTTWebSocket.swift in Sources */,
+				EF60E7542488507800B9159E /* FramePingReq.swift in Sources */,
+				EF60E74B2488507800B9159E /* CocoaMQTTReader.swift in Sources */,
 				678DE552230DE3310083C4AF /* MqttClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
