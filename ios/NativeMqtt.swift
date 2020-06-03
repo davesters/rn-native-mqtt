@@ -40,14 +40,14 @@ class NativeMqtt: RCTEventEmitter {
         }
     }
     
-    func forQosInt(qos: NSInteger) -> CocoaMQTTQOS {
+    func forQosInt(qos: NSInteger) -> CocoaMQTTQoS {
         switch qos {
         case 1:
-            return CocoaMQTTQOS.qos1
+            return CocoaMQTTQoS.qos1
         case 2:
-            return CocoaMQTTQOS.qos2
+            return CocoaMQTTQoS.qos2
         default:
-            return CocoaMQTTQOS.qos0
+            return CocoaMQTTQoS.qos0
         }
     }
     
