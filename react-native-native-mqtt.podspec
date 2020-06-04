@@ -20,7 +20,6 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.dependency "React"
-  s.dependency "CocoaMQTT"
-  s.dependency "CocoaMQTT/WebSockets", "1.3.0-rc.1"
+  s.dependency "Starscream", "~> 3.0.2"
 end
 
