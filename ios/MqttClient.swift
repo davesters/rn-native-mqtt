@@ -110,11 +110,25 @@ class MqttClient {
     }
 
     func subscribe(topic: String, qos: CocoaMQTTQoS) {
-        self.client.subscribe(topic, qos: qos)
+        do {
+            self.client.subscribe(topic, qos: qos)
+        } catch {
+            sendEvent(name: EventType.Error.rawValue, body: [
+                "id": self.id,
+                "error": error.localizedDescription
+            ])
+        }
     }
 
     func unsubscribe(topic: String) {
-        self.client.unsubscribe(topic)
+        do {
+            self.client.unsubscribe(topic)
+        } catch {
+            sendEvent(name: EventType.Error.rawValue, body: [
+                "id": self.id,
+                "error": error.localizedDescription
+            ])
+        }
     }
 
     func publish(topic: String, base64Payload: String, qos: CocoaMQTTQoS, retained: Bool) {
@@ -122,15 +136,29 @@ class MqttClient {
             return
         }
 
-        let message = CocoaMQTTMessage(topic: topic, payload: [UInt8](payload))
-        message.qos = qos
-        message.retained = retained
-        
-        self.client.publish(message)
+        do {
+            let message = CocoaMQTTMessage(topic: topic, payload: [UInt8](payload))
+            message.qos = qos
+            message.retained = retained
+            
+            self.client.publish(message)
+        } catch {
+            sendEvent(name: EventType.Error.rawValue, body: [
+                "id": self.id,
+                "error": error.localizedDescription
+            ])
+        }
     }
 
     func disconnect() {
-        self.client.disconnect()
+        do {
+            self.client.disconnect()
+        } catch {
+            sendEvent(name: EventType.Error.rawValue, body: [
+                "id": self.id,
+                "error": error.localizedDescription
+            ])
+        }
     }
 }
 
@@ -144,7 +172,7 @@ extension MqttClient: CocoaMQTTDelegate {
             self.connectCallback?(nil)
             return
         }
-
+        
         sendEvent(name: EventType.Error.rawValue, body: [
             "id": self.id,
             "error": "Error connecting: \(ack.description)"
