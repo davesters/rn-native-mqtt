@@ -15,8 +15,7 @@
     "clean": "rimraf lib",
     "tsc": "tsc -p .",
     "build": "npm run clean && npm run tsc --",
-    "release": "standard-version",
-    "install": "npm run build"
+    "release": "standard-version"
   },
   "keywords": [
     "react-native",

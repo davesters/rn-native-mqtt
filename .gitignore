@@ -1,5 +1,5 @@
 .vscode/
-lib/
+# lib/
 types/
 Checkouts/
 
