@@ -1,5 +1,7 @@
 # React Native - Native MQTT
 
+**Minimum deployment target updated to 13.0 for ios.**
+
 This is an MQTT client library for React Native. It utilizes native MQTT client libraries and exposes them via a unified Javascript interface. There are a few other React Native MQTT libraries, but they did not seem to work as expected, or did not support more advanced TLS configurations.
 
 NOTE: This is currently tested only on React Native 0.60 and above using the automatic linking functionality.

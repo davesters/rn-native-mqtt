@@ -1,7 +1,7 @@
 {
   "name": "react-native-native-mqtt",
   "title": "React Native Native Mqtt",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "An MQTT client or React Native that actually works with a simple Javascript interface",
   "main": "./lib/index.js",
   "types": "./types/index.d.ts",
