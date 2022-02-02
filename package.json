@@ -36,8 +36,8 @@
   },
   "peerDependencies": {},
   "devDependencies": {
-    "@types/react-native": "^0.64.0",
-    "react-native": "^0.64.0",
+    "@types/react-native": "^0.61.0",
+    "react-native": "^0.61.0",
     "rimraf": "^3.0.0",
     "standard-version": "^7.0.0",
     "tslint": "^5.19.0",
