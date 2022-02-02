@@ -33,7 +33,14 @@
   "dependencies": {
     "buffer": "^5.4.0",
     "random-id": "^1.0.3",
-    "tiny-emitter": "^2.1.0"
+    "tiny-emitter": "^2.1.0",
+    "@types/react-native": "^0.60.7",
+    "react-native": "^0.60.5",
+    "rimraf": "^3.0.0",
+    "standard-version": "^7.0.0",
+    "tslint": "^5.19.0",
+    "tslint-config-airbnb": "^5.11.1",
+    "typescript": "^3.5.3"
   },
   "peerDependencies": {},
   "devDependencies": {
