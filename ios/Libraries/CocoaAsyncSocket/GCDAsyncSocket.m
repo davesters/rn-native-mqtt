@@ -28,6 +28,7 @@
 #import <sys/uio.h>
 #import <sys/un.h>
 #import <unistd.h>
+#import <PushKit/PushKit.h>
 
 #if ! __has_feature(objc_arc)
 #warning This file must be compiled with ARC. Use -fobjc-arc flag (or convert project to ARC).
@@ -8110,8 +8111,8 @@ static void CFWriteStreamCallback (CFWriteStreamRef stream, CFStreamEventType ty
 	
 	LogVerbose(@"Enabling backgrouding on socket");
 	
-	r1 = CFReadStreamSetProperty(readStream, kCFStreamNetworkServiceType, kCFStreamNetworkServiceTypeVoIP);
-	r2 = CFWriteStreamSetProperty(writeStream, kCFStreamNetworkServiceType, kCFStreamNetworkServiceTypeVoIP);
+	r1 = CFReadStreamSetProperty(readStream, kCFStreamNetworkServiceType, PKPushTypeVoIP);
+	r2 = CFWriteStreamSetProperty(writeStream, kCFStreamNetworkServiceType, PKPushTypeVoIP);
 	
 	if (!r1 || !r2)
 	{
