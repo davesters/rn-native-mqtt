@@ -9,12 +9,12 @@ Pod::Spec.new do |s|
   s.description  = <<-DESC
                   An MQTT client or React Native that actually works with a simple Javascript interface
                    DESC
-  s.homepage     = "https://github.com/davesters/rn-native-mqtt"
+  s.homepage     = "https://github.com/zivost/rn-native-mqtt"
   s.license      = "MIT"
   s.license    = { :type => "MIT", :file => "LICENSE.md" }
-  s.authors      = { "David Corona" => "yourname@email.com" }
-  s.platform     = :ios, "10.0"
-  s.source       = { :git => "https://github.com/davesters/rn-native-mqtt.git", :tag => "#{s.version}" }
+  s.authors      = { "Rohit Hazra" => "rohithzr@live.com" }
+  s.platform     = :ios, "13.0"
+  s.source       = { :git => "https://github.com/zivost/rn-native-mqtt", :tag => "#{s.version}" }
 
   s.source_files = "ios/**/*.{h,m,swift}"
   s.requires_arc = true

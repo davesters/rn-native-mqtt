@@ -1,7 +1,6 @@
 .git/
 .vscode/
 .tscache/
-src/
 Checkouts/
 
 tsconfig.json
